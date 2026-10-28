@@ -17,7 +17,8 @@
   --corpo:"Manrope",ui-sans-serif,system-ui,sans-serif;
   color-scheme:dark;
 }
-html:not(.js) section[data-tema="claro"]{--bg:#14181e;--fg:#eef0f2;--mut:#a0a8b2;--line:#2a3038;--card:#1b2027}
+section[data-tema="claro"]{background:linear-gradient(180deg,var(--bg),#11141a 18%,#11141a 82%,var(--bg))!important}
+html{background:#0b0d10}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--corpo);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
@@ -544,13 +545,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     return tl;
   }
 
-  /* troca de tema entre cenas */
-  document.querySelectorAll('section[data-tema]').forEach(function(s){
-    var t = TEMAS[s.dataset.tema];
-    function vai(){ gsap.to(root, Object.assign({duration:1.6, ease:'sine.inOut', overwrite:'auto'}, t)); }
-    ScrollTrigger.create({trigger:s, start:'top 55%', end:'bottom 55%', onEnter:vai, onEnterBack:vai});
-  });
-
   gsap.to('#progresso', {scaleX:1, ease:'none', scrollTrigger:{trigger:document.body, start:'top top', end:'bottom bottom', scrub:.3}});
 
   /* pílula */
@@ -590,7 +584,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   gsap.set('#cubo', {rotateX:38, rotateY:-28, rotateZ:4, scale:.82});
   gsap.set('#cubo .face .hy', {opacity:.15});
   gsap.set('#cubo .brilho', {opacity:0});
-  gsap.timeline({scrollTrigger:{trigger:'.hero', start:'top top', end:'+=90%', scrub:1, pin:true, anticipatePin:1}})
+  gsap.timeline({scrollTrigger:{trigger:'.hero', start:'top top', end:'+=90%', scrub:1, pin:true}})
     .to('#cubo', {rotateX:0, rotateY:0, rotateZ:0, scale:1.08, ease:'none'}, 0)
     .to('#cubo .face .hy', {opacity:1, filter:'drop-shadow(0 0 18px rgba(130,190,255,.85))', ease:'none'}, .2)
     .to('#cubo .brilho', {opacity:1, ease:'none'}, .25)
