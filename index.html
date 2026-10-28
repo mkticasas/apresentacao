@@ -452,6 +452,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 (function(){
+  /* ao recarregar, sempre volta ao início */
+  try{ if ('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
+  if (location.hash) { try{ history.replaceState(null,'',location.pathname+location.search); }catch(e){} }
+  window.scrollTo(0,0);
+  window.addEventListener('beforeunload', function(){ window.scrollTo(0,0); });
+  window.addEventListener('pageshow', function(ev){ if (ev.persisted) window.scrollTo(0,0); });
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.config({ignoreMobileResize:true});
