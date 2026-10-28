@@ -17,7 +17,7 @@
   --corpo:"Manrope",ui-sans-serif,system-ui,sans-serif;
   color-scheme:dark;
 }
-html:not(.js) section[data-tema="claro"]{--bg:#f1f2ef;--fg:#15181d;--mut:#5b626c;--line:#d9dcd8;--card:#ffffff}
+html:not(.js) section[data-tema="claro"]{--bg:#14181e;--fg:#eef0f2;--mut:#a0a8b2;--line:#2a3038;--card:#1b2027}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--corpo);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
@@ -181,7 +181,7 @@ footer{border-top:1px solid var(--line);padding-block:28px 40px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--mut);font-size:13px}
 
 :focus-visible{outline:2px solid var(--azul);outline-offset:3px}
-@media(prefers-reduced-motion:reduce){.carro,.carro-v,.onda,.rolar i{animation:none}}
+
 </style>
 </head>
 <body>
@@ -451,8 +451,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 (function(){
-  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduz || !window.gsap || !window.ScrollTrigger) return;
+  if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.config({ignoreMobileResize:true});
   var root = document.documentElement;
@@ -460,7 +459,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
   var TEMAS = {
     escuro:{'--bg':'#0b0d10','--fg':'#eef0f2','--mut':'#9aa1ab','--line':'#262a31','--card':'#14171c'},
-    claro:{'--bg':'#f1f2ef','--fg':'#15181d','--mut':'#5b626c','--line':'#d9dcd8','--card':'#ffffff'}
+    claro:{'--bg':'#14181e','--fg':'#eef0f2','--mut':'#a0a8b2','--line':'#2a3038','--card':'#1b2027'}
   };
   gsap.set(root, TEMAS.escuro);
 
@@ -548,7 +547,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   /* troca de tema entre cenas */
   document.querySelectorAll('section[data-tema]').forEach(function(s){
     var t = TEMAS[s.dataset.tema];
-    function vai(){ gsap.to(root, Object.assign({duration:.9, ease:'power2.out', overwrite:'auto'}, t)); }
+    function vai(){ gsap.to(root, Object.assign({duration:1.6, ease:'sine.inOut', overwrite:'auto'}, t)); }
     ScrollTrigger.create({trigger:s, start:'top 55%', end:'bottom 55%', onEnter:vai, onEnterBack:vai});
   });
 
