@@ -173,6 +173,11 @@ section.bloco{padding-block:120px}
 .final .x{color:var(--mut);font:300 clamp(24px,4vw,40px) var(--display)}
 .final p{color:var(--mut)}
 footer{border-top:1px solid var(--line);padding-block:28px 40px}
+.feito{color:var(--mut);text-decoration:none;display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;transition:color .3s}
+.feito b{display:inline-flex;align-items:center;gap:5px;color:var(--fg);font:700 14px var(--display);letter-spacing:-.01em}
+.feito .play{width:0;height:0;border-left:8px solid #C52F43;border-top:5px solid transparent;border-bottom:5px solid transparent;transition:transform .3s}
+.feito:hover{color:var(--fg)}
+.feito:hover .play{transform:translateX(3px)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--mut);font-size:13px}
 
 :focus-visible{outline:2px solid var(--azul);outline-offset:3px}
@@ -438,7 +443,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 </main>
 
 <footer>
-  <div class="wrap"><span>iCasas · Estudo de fluxo · Hyundai Iguatemi</span><span>Base: contagem oficial da Secretaria de Trânsito de Rio Preto</span></div>
+  <div class="wrap"><a class="feito" href="https://mkticasas.github.io/imarcas/" target="_blank" rel="noopener">Estudo desenvolvido por <b><span class="play" aria-hidden="true"></span>iMarcas</b> · Marcas reais para negócios locais</a><span>Base: contagem oficial da Secretaria de Trânsito de Rio Preto</span></div>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
